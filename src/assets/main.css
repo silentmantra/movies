@@ -1,9 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root { @apply
 
+:root { 
+
+    --page-padding-x: 48px;
+    
+    --color-green: #039C55;
+    --color-blue: #2C81FB;
+    --color-red: #E81A0C;
+    --color-purple: #702BFE;
+
+    --line-height-h1: 32px;
+
+    --poster-radius: 8px;
+
+    --font-size: 14px;
+    --line-height: 16px;
+    
+    @apply
+
+    text-white
     bg-black
+    font-[Roboto]
+    font-medium
+    text-[14px]
+    leading-[16px]
+    
+    ;
+
+    h1 { @apply
+        font-bold text-[calc(var(--line-height-h1))] leading-[38px]
+    }
+
+    h2 { @apply
+        font-bold text-[28px] leading-[33px]
+    }
 
 }
