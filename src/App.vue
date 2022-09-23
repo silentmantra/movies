@@ -3,8 +3,8 @@ import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <div class="h-[100vh] grid grid-rows-[auto_1fr]">
-        <header class="shadow-black shadow-2xl z-10">
+    <div id="#app" class="h-[100vh] grid grid-rows-[auto_1fr]">
+        <header class="leading-[var(--header-height)] h-[var(--header-height)]">
             <h1 class="inline-block align-middle">
                 <RouterLink to="/">Test Task</RouterLink>
             </h1>
@@ -17,9 +17,9 @@ import { RouterView, RouterLink } from 'vue-router'
             <div class="px-[var(--page-padding-x)]">
                 <RouterView />
             </div>
-            <footer class="flex">
-                <h3 class="text-[18px] font-bold">Test Task, 2022</h3>
-                <address class="flex-grow text-right">
+            <footer class="py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
+                <h3 class="mb-[.5em] sm:mb-0 text-[18px] font-bold">Test Task, 2022</h3>
+                <address class="sm:flex-grow sm:text-right">
                     <div class="inline-block leading-normal text-left not-italic align-middle">
                         <a href="tel:518-363-2171">518-363-2171</a><br />
                         91 Park St. Fairhope, AL 36532
@@ -33,11 +33,12 @@ import { RouterView, RouterLink } from 'vue-router'
 <style scoped>
 
 header, footer { @apply
+    z-10
     bg-[#292D32] 
-    h-[100px] 
-    leading-[100px] 
     px-[var(--page-padding-x)] 
+    shadow-[0_0_42px_rgba(0,0,0,1)]
     ;
+    
 }
 
 </style>

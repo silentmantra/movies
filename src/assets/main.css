@@ -4,10 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root { 
 
-    --page-padding-x: 48px;
+    --page-padding-x: 12px;
+    --header-height: 100px;
     
     --color-green: #039C55;
     --color-blue: #2C81FB;
@@ -40,4 +40,16 @@
         font-bold text-[28px] leading-[33px]
     }
 
+}
+
+@media (min-width: 380px) {
+    #app {
+        --page-padding-x: 24px;
+    }
+}
+
+@media (min-width: 640px) {
+    #app {
+        --page-padding-x: 48px;
+    }
 }
