@@ -15,7 +15,11 @@ import { RouterView, RouterLink } from 'vue-router'
             overflow-auto
             ">
             <div class="px-[var(--page-padding-x)]">
-                <RouterView />
+                <router-view v-slot="{ Component }">
+                    <transition name="fade">
+                        <component :is="Component" />
+                    </transition>
+                </router-view>
             </div>
             <footer class="py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
                 <h3 class="mb-[.5em] sm:mb-0 text-[18px] font-bold">Test Task, 2022</h3>
@@ -31,6 +35,16 @@ import { RouterView, RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
 header, footer { @apply
     z-10

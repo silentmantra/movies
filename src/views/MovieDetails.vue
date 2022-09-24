@@ -6,7 +6,7 @@ import MovieMetrics from '@/components/MovieMetrics.vue';
 
 const props = defineProps(['id']);
 
-const movie = reactive({});
+const movie = reactive({ rating: 0 });
 
 Promise.all([api('list'), api('details')]).then(([{ items: movies }, details]) => {
 
@@ -62,7 +62,8 @@ Promise.all([api('list'), api('details')]).then(([{ items: movies }, details]) =
                     <h1>Actors</h1>
                     <ul>
                         <li v-for="actor of movie.actors" :key="actor.imdb_id">
-                            <a class="underline hover:no-underline" target="_blank" :href="`https://www.imdb.com/name/${ actor.imdb_id }/`">{{ actor.name }}</a>
+                            <a class="underline hover:no-underline" target="_blank"
+                                :href="`https://www.imdb.com/name/${ actor.imdb_id }/`">{{ actor.name }}</a>
                         </li>
                     </ul>
                 </li>
@@ -73,10 +74,21 @@ Promise.all([api('list'), api('details')]).then(([{ items: movies }, details]) =
 </template>
 
 <style scoped>
-    ul h1 { @apply
-        mb-[16px]
-    }
-    ul ul > li { @apply
-        list-disc
+    ul {
+
+        h1 { @apply
+            mb-[16px]
+        }
+
+        ul { @apply
+            
+            pl-[24px]
+            
+            ;
+
+            li { @apply
+                list-disc
+            }
+        }
     }
 </style>

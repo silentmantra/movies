@@ -6,6 +6,8 @@
 
 :root { 
 
+    --color-text: #ffffff;
+
     --page-padding-x: 12px;
     --header-height: 100px;
     
@@ -23,7 +25,7 @@
     
     @apply
 
-    text-white
+    text-[color:var(--color-text)]
     bg-black
     font-[Roboto]
     font-medium

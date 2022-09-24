@@ -35,7 +35,7 @@ const items = ref();
             "
             :class="{active:movie === activeMovie}">
             <RouterLink :to="{name: 'movie-details', params: {id: movie.id}}"
-                class="block relative h-full p-[12px] [&>:last-child]:absolute [&>:last-child]:bottom-[12px] pb-[42px]">
+                class="block relative h-full p-[12px]">
                 <img :src="movie.poster" class="rounded-[var(--poster-radius)] h-[172px] w-full object-cover mb-[12px]" />
                 <h2 
                     :title="movie.name"
@@ -46,10 +46,18 @@ const items = ref();
                         overflow-hidden
                         overflow-ellipsis
                     ">{{ movie.name }}</h2>
-                <p class="h-[calc(var(--line-height)*2)] overflow-hidden">{{ movie.description }}</p>
+                <p class="h-[calc(var(--line-height)*2)] overflow-hidden mb-[12px]">{{ movie.description }}</p>
                 <MovieMetrics :movie="movie" />
             </RouterLink>
         </li>
     </ul>
-    <RouterView />
 </template>
+
+<style scoped>
+p {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+</style>
