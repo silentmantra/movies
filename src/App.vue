@@ -1,5 +1,22 @@
 <script setup>
-import { RouterView, RouterLink } from 'vue-router'
+
+import { RouterView, RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter();
+
+router.beforeEach(async (to, from) => {
+
+    const transitioned = document.querySelectorAll('.page-transition');
+    const transition = (from, to) => transitioned.forEach(elem => elem.classList.replace('opacity-' + from, 'opacity-' + to));
+
+    transition(100, 0);
+
+    await new Promise(resolve => setTimeout(resolve, 250));
+
+    transition(0, 100);
+
+});
+
 </script>
 
 <template>
@@ -14,14 +31,11 @@ import { RouterView, RouterLink } from 'vue-router'
             grid-rows-[1fr_auto]
             overflow-auto
             ">
-            <div class="px-[var(--page-padding-x)]">
-                <router-view v-slot="{ Component }">
-                    <transition name="fade">
-                        <component :is="Component" />
-                    </transition>
-                </router-view>
+            <div id='page' class="page-transition transition-opacity opacity-100 px-[var(--page-padding-x)] relative">
+                <RouterView />
             </div>
-            <footer class="py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
+            <footer
+                class="page-transition transition-opacity opacity-100 py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
                 <h3 class="mb-[.5em] sm:mb-0 text-[18px] font-bold">Test Task, 2022</h3>
                 <address class="sm:flex-grow sm:text-right">
                     <div class="inline-block leading-normal text-left not-italic align-middle">
@@ -35,16 +49,6 @@ import { RouterView, RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 
 header, footer { @apply
     z-10
