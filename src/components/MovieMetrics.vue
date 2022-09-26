@@ -1,6 +1,6 @@
 <script setup>
 
-import Icon from './Icon.vue';
+import Tag from './Tag.vue';
 
 defineProps(['movie']);
 
@@ -8,46 +8,20 @@ defineProps(['movie']);
 
 <template>
     <ul class="flex gap-[8px]">
-        <li :class=" movie.rating >= 7 ? 'bg-green' : movie.rating >= 4 ? 'bg-purple' : 'bg-red' ">
-            <Icon icon="star" />{{ movie.rating.toFixed(1) }}
-        </li>
-        <li class="bg-blue">
-            <Icon icon="movie" /><span class="first-letter:uppercase">{{ movie.genre }}</span>
-        </li>
-        <li class="bg-purple">
-            <Icon icon="clock" />{{ movie.duration }}
-        </li>
+        <Tag
+            :class=" movie.rating >= 7 ? 'bg-green' : movie.rating >= 4 ? 'bg-purple' : 'bg-red' "
+            icon="star">
+            {{ movie.rating.toFixed(1) }}
+        </Tag>
+        <Tag
+            class="bg-blue"
+            icon="movie">
+            <span class="first-letter:uppercase">{{ movie.genre }}</span>
+        </Tag>
+        <Tag
+            class="bg-purple"
+            icon="clock">
+            {{ movie.duration }}
+        </Tag>
     </ul>
 </template>
-
-<style scoped>
-
-li { @apply 
-    
-    inline-block
-    relative 
-    rounded-full 
-    h-[13px]
-    whitespace-nowrap 
-    pl-[16px]
-    pr-[6px]
-    leading-[13px]
-    text-[11px]
-    font-medium
-    ;
-
-    :deep(svg) { @apply
-        absolute
-        top-[50%]
-        left-[6px]
-        mt-[-4px];
-    }
-    
-    > * {  @apply
-        inline-block
-        align-middle
-    }
-
-}
-
-</style>

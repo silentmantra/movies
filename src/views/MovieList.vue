@@ -9,7 +9,7 @@ import { scrollPos } from './MovieList';
 const movies = reactive([]);
 api('list').then(data => movies.splice(0, 0, ...data.items));
 
-const main = document.querySelector('main');
+const main = document.querySelector('html');
 
 watch(movies, () => {
     scrollPos.value &&  (main.scrollTop = scrollPos.value);
@@ -30,6 +30,7 @@ onBeforeUnmount(() => scrollPos.value = main.scrollTop);
                 bg-[#292D32] rounded-[16px] overflow-hidden
                 hover:shadow-[8px_8px_0_var(--color-purple)]
                 active:hover:shadow-[0_0_3px_3px_var(--color-purple)]
+                focus:hover:shadow-[0_0_3px_3px_var(--color-purple)]
                 relative 
                     left-0 top-0 
                     hover:left-[-8px] hover:top-[-8px]
