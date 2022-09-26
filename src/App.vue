@@ -7,13 +7,13 @@ const router = useRouter();
 router.beforeEach(async (to, from) => {
 
     const transitioned = document.querySelectorAll('.page-transition');
-    const transition = (from, to) => transitioned.forEach(elem => elem.classList.replace('opacity-' + from, 'opacity-' + to));
+    const transition = val => transitioned.forEach(elem => elem.style.opacity = val);
 
-    transition(100, 0);
+    transition(0);
 
-    await new Promise(resolve => setTimeout(resolve, 250));
+    await new Promise(resolve => setTimeout(resolve, 200));
 
-    transition(0, 100);
+    transition(100);
 
 });
 
@@ -31,11 +31,11 @@ router.beforeEach(async (to, from) => {
             grid-rows-[1fr_auto]
             overflow-auto
             ">
-            <div id='page' class="page-transition transition-opacity opacity-100 px-[var(--page-padding-x)] relative">
+            <div class="page-transition px-[var(--page-padding-x)] relative">
                 <RouterView />
             </div>
             <footer
-                class="page-transition transition-opacity opacity-100 py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
+                class="page-transition py-[38px] sm:py-0 sm:h-[var(--header-height)] sm:flex sm:leading-[var(--header-height)]">
                 <h3 class="mb-[.5em] sm:mb-0 text-[18px] font-bold">Test Task, 2022</h3>
                 <address class="sm:flex-grow sm:text-right">
                     <div class="inline-block leading-normal text-left not-italic align-middle">
@@ -57,6 +57,11 @@ header, footer { @apply
     shadow-[0_0_42px_rgba(0,0,0,1)]
     ;
     
+}
+
+.page-transition { @apply
+
+    transition-opacity opacity-100 duration-200
 }
 
 </style>
