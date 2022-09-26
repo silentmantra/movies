@@ -13,7 +13,7 @@ router.beforeEach(async (to, from) => {
 
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    transition(100);
+    transition(1);
 
 });
 
